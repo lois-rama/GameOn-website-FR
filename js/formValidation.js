@@ -39,15 +39,29 @@ function checkLastName() {
     }
 }
 
+//check email
 function checkEmail() {
-    if (email.value.match(emailRegex)) {
-        email.style.border = '2px solid #279e7a';
-        email.nextElementSibling.style.display = "none";
+    if (email.value.match(emailRegex)) { // si l'email est valide, match le Regex, 
+        email.style.border = '2px solid #279e7a'; // le border est vert
+        email.nextElementSibling.style.display = "none"; // pas de message d'erreur
         return true
     }else {
-        email.style.border = '2px solid #e54858';
+        email.style.border = '2px solid #e54858'; // sinon le border est rouge et le message d'erreur s'affiche
         email.nextElementSibling.style.display = "block";
         return false;
+    }
+}
+
+//check date de naissance
+function checkBirthdate() {
+    if (birthdate.value < birthdate.min || birthdate.value > birthdate.max) { //si la date de naissance ne se trouve pas entre le min et le max définit dans le HTML
+        birthdate.style.border = '2px solid #e54858'; // le border est rouge
+        birthdate.nextElementSibling.style.display = "block"; // le message d'erreur s'affiche
+        return false
+    }else {
+        birthdate.style.border = '2px solid #279e7a'; // si la date est valide
+        birthdate.nextElementSibling.style.display = "none"; // le border est vert et pas de message d'erreur
+        return true;
     }
 }
 
@@ -55,12 +69,13 @@ function checkEmail() {
 // Ecoute de l'évèvement 'SUBMIT' du formulaire
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFirstName() === true && checkLastName() === true && checkEmail() === true) { //si les inputs prénom & nom sont valides, une alerte s'affiche
+    if(checkFirstName() === true && checkLastName() === true && checkEmail() === true && checkBirthdate() === true) { //si les inputs prénom & nom sont valides, une alerte s'affiche
         alert("OKAY")
     } else {
         checkFirstName();
         checkLastName();
         checkEmail();
+        checkBirthdate();
     }
 
 })

@@ -82,7 +82,8 @@
             <!-- BIRTHDATE -->
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" min="1950-01-01" max="2003-01-01" onfocusout="checkBirthdate()" />
+              <p class="errorText">Veuillez entrer une date de naissance valide.</p>
             </div>
             <!-- TOURNAMENTS -->
             <div class="formData">
