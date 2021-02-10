@@ -76,7 +76,8 @@
             <!-- EMAIL -->
             <div class="formData">
               <label for="email">E-mail</label><br>
-              <input class="text-control" type="email" id="email" name="email" placeholder="exemple@email.com" /><br>
+              <input class="text-control" type="email" id="email" name="email" placeholder="exemple@email.com" onfocusout="checkEmail()"/>
+              <p class="errorText">Veuillez entrer une adresse mail valide.</p>
             </div>
             <!-- BIRTHDATE -->
             <div class="formData">

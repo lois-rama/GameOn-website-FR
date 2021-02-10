@@ -7,30 +7,12 @@ const tournamentQuantity = document.getElementById('quantity');
 const form = document.getElementById('form');
 
 //REGEX
-let nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
+let nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]+$/;
 let emailRegex = /\S+@\S+\.\S+/;
-
-//validation form
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     //validation first name
-//     if (firstName.value.length < 2 || firstName.value === '' || firstName.value == null) {
-//         firstName.style.border = '2px solid #e54858';
-//         firstName.nextElementSibling.style.display = "block";
-//     }else {
-//         firstName.style.border = '2px solid #279e7a';
-//     }
-//     //validation last name
-//     if (lastName.value.length < 2 || firstName.value === '' || firstName.value == null) {
-//         lastName.style.border = '2px solid #e54858';
-//         lastName.nextElementSibling.style.display = "block";
-//     }else {
-//         lastName.style.border = '2px solid #279e7a';
-//     }
-// })
 
 
 // VALIDATIONS INPUTS
+
 // check prénom
 function checkFirstName() {
     if (firstName.value.length < 2 || firstName.value === '' || !firstName.value.match(nameRegex)) { // si l'input est vide, ou a moins de 2 caractères
@@ -57,14 +39,28 @@ function checkLastName() {
     }
 }
 
+function checkEmail() {
+    if (email.value.match(emailRegex)) {
+        email.style.border = '2px solid #279e7a';
+        email.nextElementSibling.style.display = "none";
+        return true
+    }else {
+        email.style.border = '2px solid #e54858';
+        email.nextElementSibling.style.display = "block";
+        return false;
+    }
+}
+
+
 // Ecoute de l'évèvement 'SUBMIT' du formulaire
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFirstName() === true && checkLastName() === true) { //si les inputs prénom & nom sont valides, une alerte s'affiche
+    if(checkFirstName() === true && checkLastName() === true && checkEmail() === true) { //si les inputs prénom & nom sont valides, une alerte s'affiche
         alert("OKAY")
     } else {
         checkFirstName();
         checkLastName();
+        checkEmail();
     }
 
 })
