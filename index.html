@@ -64,12 +64,14 @@
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="text-control success" type="text" id="first" name="first" minlength="2"
-                placeholder="Prénom" /><br>
+                placeholder="Prénom" onfocusout="checkFirstName()"/>
+              <p class="errorText">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
             </div>
             <!-- LAST NAME -->
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" placeholder="Nom" /><br>
+              <input class="text-control" type="text" id="last" name="last"placeholder="Nom" onfocusout="checkLastName()"/>
+              <p class="errorText">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
             </div>
             <!-- EMAIL -->
             <div class="formData">
@@ -141,5 +143,6 @@
       </p>
     </footer>
     <script src="js/modal.js"></script>
+    <script src="js/formValidation.js"></script>
   </body>
 </html>

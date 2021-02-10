@@ -27,5 +27,6 @@ closeModalBtn.addEventListener("click", closeModal)
 //close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  // document.querySelector('form').reset(); // le formulaire se reset à la fermeture du modal.
 }
 
