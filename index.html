@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Réservation</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="css/modal.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
@@ -23,7 +23,7 @@
         <a href="#"><span>Contact</span></a>
         <a href="#"><span>Évènements passés</span></a>
         <a href="javascript:void(0);" class="icon" onclick="editNav()">
-          <i class="fa fa-bars"></i>
+          <i class="fa fa-bars menuIcon"></i>
         </a>
       </div>
     </nav>
@@ -54,7 +54,7 @@
     </div>
 
     <!--MODAL-->
-    <div class="bground">
+    <div class="bground fond">
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
@@ -70,7 +70,7 @@
             <!-- LAST NAME -->
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last"placeholder="Nom" onfocusout="checkLastName()"/>
+              <input class="text-control" type="text" id="last" name="last" placeholder="Nom" onfocusout="checkLastName()"/>
               <p class="errorText">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
             </div>
             <!-- EMAIL -->
