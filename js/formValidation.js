@@ -1,10 +1,11 @@
 //DOM elements
+const form = document.getElementById('form');
+
 const firstName = document.getElementById('first');
 const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const tournamentQuantity = document.getElementById('quantity');
-const form = document.getElementById('form');
 const locationSelector = document.getElementsByName("location");
 const errorCityText = document.getElementById('errorCity');
 const checkboxConditions = document.getElementById('checkbox1');
@@ -14,70 +15,62 @@ const errorConditions = document.getElementById('errorConditionsText');
 let nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]{2,}/;
 let emailRegex = /\S+@\S+\.\S{2,}/;
 
+// Show error if input is invalid.
+function showError(input) {
+    input.style.border = 'solid 2px #ff4e60';
+    input.nextElementSibling.style.display = "block";
+    return false;
+}
 
+function showSuccess(input) {
+	input.style.border = 'none';
+    input.nextElementSibling.style.display = "none";
+    return true;
+}
 // VALIDATIONS INPUTS
+
 
 // check prénom
 function checkFirstName() {
-    if (firstName.value === '' || !firstName.value.match(nameRegex)) { // si l'input est vide, ou a moins de 2 caractères
-        firstName.style.border = '2px solid #e54858';  // le border devient rouge
-        firstName.nextElementSibling.style.display = "block"; // et un message d'erreur s'affiche en dessous
-        return false;
+    if (firstName.value.trim() === '' || !firstName.value.match(nameRegex)) { // si l'input est vide, ou a moins de 2 caractères
+        showError(firstName);
     }else {
-        firstName.style.border = 'none'; // si l'input à 2 caractère ou plus,
-        firstName.nextElementSibling.style.display = "none"; //pas de message d'erreur.
-        return true;
+        showSuccess(firstName);
     }
 }
 
 //check nom de famille
 function checkLastName() {
-    if (lastName.value === '' || !lastName.value.match(nameRegex)) {
-        lastName.style.border = '2px solid #e54858';
-        lastName.nextElementSibling.style.display = "block";
-        return false;
+    if (lastName.value.trim() === '' || !lastName.value.match(nameRegex)) {
+        showError(lastName);
     }else {
-        lastName.style.border = "none";
-        lastName.nextElementSibling.style.display = "none";
-        return true;
+        showSuccess(lastName);
     }
 }
 
 //check email
 function checkEmail() {
     if (email.value.match(emailRegex)) { // si l'email est valide, match le Regex, 
-        email.style.border = 'none';
-        email.nextElementSibling.style.display = "none"; // pas de message d'erreur
-        return true;
+        showSuccess(email);
     }else {
-        email.style.border = '2px solid #e54858'; // sinon le border est rouge et le message d'erreur s'affiche
-        email.nextElementSibling.style.display = "block";
-        return false;
+        showError(email);
     }
 }
 
 //check date de naissance
 function checkBirthdate() {
-    if (birthdate.value < birthdate.min || birthdate.value > birthdate.max) { //si la date de naissance ne se trouve pas entre le min et le max définit dans le HTML
-        birthdate.style.border = '2px solid #e54858'; // le border est rouge
-        birthdate.nextElementSibling.style.display = "block"; // le message d'erreur s'affiche
-        return false;
+    if (birthdate.value< birthdate.min || birthdate.value > birthdate.max) { //si la date de naissance ne se trouve pas entre le min et le max définit dans le HTML
+        showError(birthdate);
     }else {
-        birthdate.style.border = 'none';
-        birthdate.nextElementSibling.style.display = "none"; //pas de message d'erreur
-        return true;
+        showSuccess(birthdate);
     }
 }
 
 function checkTournements() {
-    if (tournamentQuantity.value < tournamentQuantity.min || tournamentQuantity.value > tournamentQuantity.max) {
-        tournamentQuantity.style.border = '2px solid #e54858'; // le border est rouge
-        tournamentQuantity.nextElementSibling.style.display = "block"; // le message d'erreur s'affiche
-        return false;
+    if (tournamentQuantity.value == "" || tournamentQuantity.value < 0) {
+        showError(tournamentQuantity);
     } else {
-        tournamentQuantity.style.border = 'none';
-        tournamentQuantity.nextElementSibling.style.display = "none"; // pas de message d'erreur
-        return true;
+        showSuccess(tournamentQuantity);
     }
 }
 
@@ -111,10 +104,29 @@ function checkConditions() {
 // Ecoute de l'évèvement 'SUBMIT' du formulaire
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if(checkFirstName() === true && checkLastName() === true 
-    && checkEmail() === true && checkBirthdate() === true 
-    && checkTournements() === true && checkCity() === true && checkConditions() === true) { //si les inputs sont valides, une alerte s'affiche
-        alert("OKAY")
+
+    if(showSuccess(firstName) === true && showSuccess(lastName) === true 
+    && showSuccess(email) === true && showSuccess(birthdate) === true 
+    && showSuccess(tournamentQuantity) === true && checkCity() === true && checkConditions() === true) { //si les inputs sont valides, une alerte s'affiche
+    const modalBody = document.getElementsByClassName('modal-body');
+    const successMessage  = document.createElement('button');
+    modalBody[0].innerHTML = '<h2>Merci ! Votre réservation a été reçue.</h2>';
+    modalBody[0].style.minHeight = '850px';
+    modalBody[0].style.textAlign = 'center';
+    modalBody[0].style.display = 'flex';
+    modalBody[0].style.flexDirection = 'column';
+    modalBody[0].style.justifyContent = "center";
+    modalBody[0].style.alignItems = "center";
+
+
+    successMessage.innerHTML = "Fermer";
+    successMessage.classList.add('btn-submit');
+    successMessage.classList.add('button');
+    successMessage.style.position = 'absolute';
+    successMessage.style.bottom = '25px';
+    modalBody[0].appendChild(successMessage);
+
+    successMessage.addEventListener("click", closeModal);
     } else {
         checkFirstName();
         checkLastName();
@@ -124,7 +136,4 @@ form.addEventListener('submit', (e) => {
         checkCity();
         checkConditions()
     }
-
 })
-
-

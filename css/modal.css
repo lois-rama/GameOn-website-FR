@@ -10,13 +10,21 @@
 }
 /* Landing Page */
 
+/* html{
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+} */
+
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1600px;
+  /* height: 100%;
+  overflow: hidden; */
   margin: 0 auto;
 }
 
@@ -201,7 +209,7 @@ input {
 }
 
 .errorText{
-  color: #e54858;
+  color: #ff4e60;
   font-size: 0.9rem;
   display: none;
 }
@@ -214,30 +222,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
-/* .formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-} */
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -330,10 +315,11 @@ input[data-error]::after {
 .btn-submit,
 .btn-signup {
   background: #fe142f;
+  font-size: 1rem;
+  font-family: inherit;
   display: block;
   margin: 0 auto;
   border-radius: 7px;
-  font-size: 1rem;
   padding: 12px 82px;
   color: #fff;
   cursor: pointer;
@@ -411,7 +397,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  min-height: 50rem;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -448,16 +434,19 @@ input[data-error]::after {
 }
 .hero-text {
   width: 146%;
+  font-size: 1.8rem;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 90px;
   padding: 0;
 }
 .btn-signup {
   outline: none;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  font-family: inherit;
   padding: 15px 23px;
   margin: 0;
-  margin-top: 59px;
+  margin-top: 90px;
+  
 }
 .hero-img {
   grid-column: span 8;
