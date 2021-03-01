@@ -13,7 +13,7 @@ const errorConditions = document.getElementById('errorConditionsText');
 
 //REGEX
 let nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ-]{2,}/;
-let emailRegex = /\S+@\S+\.\S{2,}/;
+let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; 
 
 // Affiche erreur si la valeur de l'input est invalide.
 function showError(input) {
@@ -153,3 +153,4 @@ form.addEventListener('submit', (e) => {
         checkConditions();
     }
 })
+
