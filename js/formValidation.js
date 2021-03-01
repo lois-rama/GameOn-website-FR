@@ -124,22 +124,22 @@ form.addEventListener('submit', (e) => {
         && checkEmail() === true && checkBirthdate() === true 
         && checkTournements() === true && checkCity() === true && checkConditions() === true) {
 
-        const modalBody = document.getElementsByClassName('modal-body');
+        const modalBody = document.querySelector('.modal-body');
         const successMessage  = document.createElement('button');
-        modalBody[0].innerHTML = '<h2>Merci ! Votre réservation a été reçue.</h2>';
-        modalBody[0].style.minHeight = '850px';
-        modalBody[0].style.textAlign = 'center';
-        modalBody[0].style.display = 'flex';
-        modalBody[0].style.flexDirection = 'column';
-        modalBody[0].style.justifyContent = "center";
-        modalBody[0].style.alignItems = "center";
+        modalBody.innerHTML = '<h2>Merci ! Votre réservation a été reçue.</h2>';
+        modalBody.style.minHeight = '850px';
+        modalBody.style.textAlign = 'center';
+        modalBody.style.display = 'flex';
+        modalBody.style.flexDirection = 'column';
+        modalBody.style.justifyContent = "center";
+        modalBody.style.alignItems = "center";
 
         successMessage.textContent = "Fermer";
         successMessage.classList.add('btn-submit');
         successMessage.classList.add('button');
         successMessage.style.position = 'absolute';
         successMessage.style.bottom = '25px';
-        modalBody[0].appendChild(successMessage); //sucessMessage est enfant de modalBody.
+        modalBody.appendChild(successMessage); //sucessMessage est enfant de modalBody.
 
         successMessage.addEventListener("click", closeModal); // Au click du button 'Fermer', la modal se ferme grâce à la fonction closeModal.
     } else {
